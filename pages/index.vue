@@ -63,6 +63,7 @@ export default {
     return {
       currencySymbol: 'Rp',
       categories: [
+        { title: 'All', link: '/all', icon: '/assets/icons/groceries.svg' },
         { title: 'Vegetables', link: '/vegetables', icon: '/assets/icons/vegetables.svg' },
         { title: 'Meat', link: '/meat', icon: '/assets/icons/meat.svg' },
         { title: 'Fruits', link: '/fruits', icon: '/assets/icons/fruits.svg' },
@@ -85,7 +86,10 @@ export default {
   },
   methods: {
     showProductByCategory(category) {
-      if (this.products.length !== this.unfileteredProducts.length && this.unfileteredProducts.length !== 0) {
+      if (category === 'All') {
+        const allProduct = this.products.length > this.unfileteredProducts.length ? this.products : this.unfileteredProducts
+        this.products = allProduct
+      } else if (this.products.length !== this.unfileteredProducts.length && this.unfileteredProducts.length !== 0) {
         this.products = this.unfileteredProducts.filter(product => product.category == category.toLowerCase())
       } else {
         this.unfileteredProducts = this.products
@@ -127,6 +131,11 @@ export default {
   text-align: center;
 }
 
+.all {
+  background-color: #e6e6fa;
+  border-color: #e6e6fa;
+}
+
 .vegetables {
   background-color: #d3ffce;
   border-color: #d3ffce;
@@ -145,6 +154,10 @@ export default {
 .fish {
   background-color: #66cdaa;
   border-color: #66cdaa;
+}
+
+.category:hover {
+  background-color: #fff;
 }
 
 .product {
