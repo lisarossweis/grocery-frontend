@@ -1,57 +1,66 @@
 <template>
   <div class="container">
-    <div class="topbar">
-      <div class="logo">GiaGrocery</div>
-      <div class="searchbox">
-        <input class="input" type="search">
-        <i class="fa fa-search"></i>
+    <div class="page-wrapper">
+      <div class="topbar">
+        <div class="logo">GiaGrocery</div>
+        <div class="searchbox">
+          <input class="input" type="search">
+          <i class="bi bi-search"></i>
+        </div>
       </div>
-    </div>
 
-    <div class="categories">
-      <h3 class="categories-text">Categories &gt;</h3>
-      <div
-        class="category"
-        v-for="(category, index) in categories"
-        :key="index"
-        :class="category.title.toLowerCase()"
-        @click="showProductByCategory(category.title)"
-      >
-        <img :src="category.icon" :alt="category.title" />
-        <p class="category-title">{{ category.title }}</p>
+      <div class="categories">
+        <h3 class="categories-text">Categories &gt;</h3>
+        <div
+          class="category"
+          v-for="(category, index) in categories"
+          :key="index"
+          :class="category.title.toLowerCase()"
+          @click="showProductByCategory(category.title)"
+        >
+          <img :src="category.icon" :alt="category.title" />
+          <p class="category-title">{{ category.title }}</p>
+        </div>
       </div>
-    </div>
 
-    <div class="products">
-      <h3 class="products-text">Products &gt;</h3>
-      <div class="product" v-for="(product, index) in products" :key="index">
-        <img class="product-image" :src="product.image" :alt="product.name" />
-        <div class="product-detail">
-          <div class="product-name">
-            <p>{{ product.name }}</p>
-          </div>
-          <div class="product-price">
-            <p>{{ currencySymbol }} {{ product.price }}</p>
+      <div class="products">
+        <h3 class="products-text">Products &gt;</h3>
+        <div class="product" v-for="(product, index) in products" :key="index">
+          <img class="product-image" :src="product.image" :alt="product.name" />
+          <div class="product-detail">
+            <div class="product-name">
+              <p>{{ product.name }}</p>
+            </div>
+            <div class="product-price">
+              <p>{{ currencySymbol }} {{ product.price }}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
+    <div class="spacer"></div>
+
     <div class="bottom-nav">
       <div class="tab">
-        <i class="fa fa-home"></i>
+        <i class="bi bi-house" />
+        <p>Home</p>
       </div>
       <div class="tab">
-        <i class="fa fa-hat-chef"></i>
+        <i class="bi bi-card-checklist" />
+        <p>Wishlist</p>
       </div>
       <div class="tab">
-        <i class="fa fa-bucket"></i>
+        <i class="bi bi-hand-bag" />
+        <p>Bag</p>
       </div>
       <div class="tab">
-        <i class="fa fa-receipt"></i>
+        <i class="bi bi-receipt" />
+        <p>History</p>
       </div>
       <div class="tab">
-        <i class="fa fa-user"></i>
+        <i class="bi bi-person" />
+        <p>Profile</p>
       </div>
     </div>
   </div>
@@ -109,7 +118,9 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding-bottom: 10px;
+}
+.categories, .products, .topbar {
+  padding-bottom: 15px;
 }
 
 .categories, .products {
@@ -117,8 +128,13 @@ export default {
   gap: 3px;
 }
 
-.topbar, .bottom-nav {
+.topbar {
   justify-content: space-between;
+}
+
+.bottom-nav {
+  width: 100%;
+  justify-content: center;
 }
 
 .category, .product {
@@ -187,5 +203,37 @@ export default {
 
 .logo {
   font-weight: bolder;
+}
+
+.bottom-nav {
+  clear: both;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin-top: 20px;
+  background-color: #fff;
+  box-shadow: 0 -5px 8px #ccc;
+}
+
+.bottom-nav .tab {
+  padding-top: 20px;
+  flex-grow: 2;
+  text-align: center;
+}
+
+.bottom-nav .tab:hover {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #db7093;
+  color: #fff;
+}
+
+.page-wrapper {
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.spacer {
+  height: 50px;
 }
 </style>
