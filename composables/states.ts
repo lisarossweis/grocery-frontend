@@ -25,9 +25,9 @@ export const useProducts = () => useState<Product[]>('products', () => [
 export const useCurrencySymbol = () => useState<string>('currencySymbol', () => 'Rp')
 
 export const useBottomNavLinks = () => useState('bottomNavLinks', () => [
-  { text: 'Home', link: '/', icon: '' },
-  { text: 'Wishlist', link: '/wishlist', icon: '' },
-  { text: 'Bag', link: '/bag', icon: '' },
-  { text: 'Orders', link: '/orders', icon: '' },
-  { text: 'Profile', link: '/profile', icon: '' },
+  { text: 'Home', link: '/', icon: 'fa-solid fa-home' },
+  { text: 'Wishlist', link: '/wishlist', icon: 'fa-solid fa-heart' },
+  { text: 'Bag', link: '/bag', icon: 'fa-solid fa-bag-shopping' },
+  { text: 'Orders', link: '/orders', icon: 'fa-solid fa-receipt' },
+  { text: 'Profile', link: '/profile', icon: 'fa-solid fa-user' },
 ])
