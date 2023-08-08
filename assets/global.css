@@ -1,0 +1,126 @@
+* {
+  font-family: sans-serif, "Roboto";
+}
+
+.categories, .products, .topbar, .bottom-nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.categories, .products, .topbar {
+  padding-bottom: 15px;
+}
+
+.categories, .products {
+  justify-content: space-evenly;
+  gap: 3px;
+}
+
+.topbar {
+  justify-content: space-between;
+}
+
+.bottom-nav {
+  width: 100%;
+  justify-content: center;
+}
+
+.category, .product {
+  flex-grow: 1;
+  border: 2px solid;
+  border-radius: 5px;
+}
+
+.category p {
+  text-align: center;
+}
+
+.all {
+  background-color: #e6e6fa;
+  border-color: #e6e6fa;
+}
+
+.vegetables {
+  background-color: #d3ffce;
+  border-color: #d3ffce;
+}
+
+.meat {
+  background-color: #ff7f7f;
+  border-color: #ff7f7f;
+}
+
+.fruits {
+  background-color: #ff7f50;
+  border-color: #ff7f50;
+}
+
+.fish {
+  background-color: #66cdaa;
+  border-color: #66cdaa;
+}
+
+.category:hover {
+  background-color: #fff;
+}
+
+.product {
+  border-color: #f0f8ff;
+}
+
+.product:hover {
+  border-color: #b4eeb4;
+}
+
+.category img, .product img {
+  display: inline-block;
+  width: 5em;
+}
+
+.category img {
+  align-self: center;
+}
+
+.topbar {
+  padding: 3px 3px 5px;
+}
+
+.categories-text, .products-text {
+  flex-basis: 100%;
+}
+
+.logo {
+  font-weight: bolder;
+}
+
+.bottom-nav {
+  clear: both;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin-top: 20px;
+  background-color: #fff;
+  box-shadow: 0 -5px 8px #ccc;
+}
+
+.bottom-nav .tab {
+  padding-top: 20px;
+  flex-grow: 2;
+  text-align: center;
+}
+
+.bottom-nav .tab:hover {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #db7093;
+  color: #fff;
+}
+
+.page-wrapper {
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.spacer {
+  height: 50px;
+}
