@@ -11,6 +11,10 @@
   padding-bottom: 15px;
 }
 
+.topbar {
+  height: 50px;
+}
+
 .categories, .products {
   justify-content: space-evenly;
   gap: 3px;
@@ -107,9 +111,10 @@
   padding-top: 20px;
   flex-grow: 2;
   text-align: center;
+  color: #000;
 }
 
-.bottom-nav .tab:hover {
+.bottom-nav .tab:hover, .bottom-nav .tab:active, .bottom-nav .tab:focus {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   background-color: #db7093;
