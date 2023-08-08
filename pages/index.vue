@@ -42,69 +42,30 @@
     <div class="spacer"></div>
 
     <div class="bottom-nav">
-      <div class="tab">
-        <i class="bi bi-house" />
-        <p>Home</p>
-      </div>
-      <div class="tab">
-        <i class="bi bi-card-checklist" />
-        <p>Wishlist</p>
-      </div>
-      <div class="tab">
-        <i class="bi bi-hand-bag" />
-        <p>Bag</p>
-      </div>
-      <div class="tab">
-        <i class="bi bi-receipt" />
-        <p>History</p>
-      </div>
-      <div class="tab">
-        <i class="bi bi-person" />
-        <p>Profile</p>
+      <div class="tab" v-for="(nav, index) in bottomNavLinks" :key="index">
+        <i class="bi" :class="nav.icon" />
+        <p>{{ nav.text }}</p>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      currencySymbol: 'Rp',
-      categories: [
-        { title: 'All', link: '/all', icon: '/assets/icons/groceries.svg' },
-        { title: 'Vegetables', link: '/vegetables', icon: '/assets/icons/vegetables.svg' },
-        { title: 'Meat', link: '/meat', icon: '/assets/icons/meat.svg' },
-        { title: 'Fruits', link: '/fruits', icon: '/assets/icons/fruits.svg' },
-        { title: 'Fish', link: '/fish', icon: '/assets/icons/fish.svg' },
-      ],
-      products: [
-        { name: 'Apple', price: 10, category: 'fruits', image: '/assets/icons/apple.svg' },
-        { name: 'Orange', price: 10, category: 'fruits', image: '/assets/icons/orange.svg' },
-        { name: 'Grape', price: 10, category: 'fruits', image: '/assets/icons/grape.svg' },
-        { name: 'Carrot', price: 10, category: 'vegetables', image: '/assets/icons/carrot.svg' },
-        { name: 'Garlic', price: 10, category: 'vegetables', image: '/assets/icons/garlic.svg' },
-        { name: 'Potato', price: 5, category: 'vegetables', image: '/assets/icons/potato.svg' },
-        { name: 'Green Onion', price: 0, category: 'vegetables', image: '/assets/icons/green-onion.svg' },
-        { name: 'Tomato', price: 10, category: 'vegetables', image: '/assets/icons/tomato.svg' },
-        { name: 'Chicken', price: 20, category: 'meat', image: '/assets/icons/chicken.svg' },
-        { name: 'Fish', price: 15, category: 'fish', image: '/assets/icons/fish.svg' },
-      ],
-      unfileteredProducts: []
-    }
-  },
-  methods: {
-    showProductByCategory(category) {
-      if (category === 'All') {
-        const allProduct = this.products.length > this.unfileteredProducts.length ? this.products : this.unfileteredProducts
-        this.products = allProduct
-      } else if (this.products.length !== this.unfileteredProducts.length && this.unfileteredProducts.length !== 0) {
-        this.products = this.unfileteredProducts.filter(product => product.category == category.toLowerCase())
-      } else {
-        this.unfileteredProducts = this.products
-        this.products = this.products.filter(product => product.category == category.toLowerCase())
-      }
-    }
+<script setup lang="ts">
+const currencySymbol = useCurrencySymbol()
+const categories = useCategories()
+const products = useProducts()
+const bottomNavLinks = useBottomNavLinks()
+let unfileteredProducts: Product[] = []
+
+const showProductByCategory = (category: string) => {
+  if (category === 'All') {
+    const allProduct: Product[] = products.value.length > unfileteredProducts.length ? products.value : unfileteredProducts
+    products.value = allProduct
+  } else if (products.value.length !== unfileteredProducts.length && unfileteredProducts.length !== 0) {
+    products.value = unfileteredProducts.filter(product => product.category == category.toLowerCase())
+  } else {
+    unfileteredProducts = products.value
+    products.value = products.value.filter(product => product.category == category.toLowerCase())
   }
 }
 </script>
