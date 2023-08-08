@@ -15,6 +15,10 @@
   height: 50px;
 }
 
+.topbar .logo {
+  padding: 8px 5px;
+}
+
 .categories, .products {
   justify-content: space-evenly;
   gap: 3px;
