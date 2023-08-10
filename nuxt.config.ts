@@ -2,8 +2,13 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: [
-    // 'bootstrap-vue/nuxt',
+     '@pinia/nuxt'
   ],
+  pinia: {
+    autoImports: [
+      'defineStore'
+    ],
+  },
   webpack: {
     ignored: ['node_modules']
   }
