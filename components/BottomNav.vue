@@ -15,5 +15,6 @@
 </template>
 
 <script setup lang="ts">
-const bottomNavLinks = useBottomNavLinks()
+import useBottomNavStore from '@/store/bottom-nav'
+const { bottomNavLinks } = useBottomNavStore()
 </script>
